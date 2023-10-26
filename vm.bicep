@@ -1,5 +1,5 @@
 @description('The name of you Virtual Machine.')
-param vmName string = 'AWXMasterNode'
+param vmName string 
 
 @description('Username for the Virtual Machine.')
 param adminUsername string
@@ -25,29 +25,29 @@ param dnsLabelPrefix string = toLower('${vmName}-${uniqueString(resourceGroup().
   'Ubuntu-2204'
   'Centos-85'
 ])
-param ubuntuOSVersion string = 'Ubuntu-2204'
+param OSVersion string
 
 @description('Location for all resources.')
 param location string = resourceGroup().location
 
 @description('The size of the VM')
-param vmSize string = 'Standard_B1s'
+param vmSize string
 
 @description('Name of the VNET')
-param virtualNetworkName string = 'vNet'
+param virtualNetworkName string
 
 @description('Name of the subnet in the virtual network')
 param subnetName string = 'Subnet'
 
 @description('Name of the Network Security Group')
-param networkSecurityGroupName string = 'SecGroupNet'
+param networkSecurityGroupName string
 
 @description('Security Type of the Virtual Machine.')
 @allowed([
   'Standard'
   'TrustedLaunch'
 ])
-param securityType string = 'TrustedLaunch'
+param securityType string
 
 var imageReference = {
   'Ubuntu-1804': {
@@ -202,7 +202,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
           storageAccountType: osDiskType
         }
       }
-      imageReference: imageReference[ubuntuOSVersion]
+      imageReference: imageReference[OSVersion]
     }
     networkProfile: {
       networkInterfaces: [
