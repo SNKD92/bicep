@@ -23,6 +23,7 @@ param dnsLabelPrefix string = toLower('${vmName}-${uniqueString(resourceGroup().
   'Ubuntu-1804'
   'Ubuntu-2004'
   'Ubuntu-2204'
+  'Centos-85'
 ])
 param ubuntuOSVersion string = 'Ubuntu-2204'
 
@@ -30,7 +31,7 @@ param ubuntuOSVersion string = 'Ubuntu-2204'
 param location string = resourceGroup().location
 
 @description('The size of the VM')
-param vmSize string = 'Standard_D2s_v3'
+param vmSize string = 'Standard_B1s'
 
 @description('Name of the VNET')
 param virtualNetworkName string = 'vNet'
@@ -65,6 +66,12 @@ var imageReference = {
     publisher: 'Canonical'
     offer: '0001-com-ubuntu-server-jammy'
     sku: '22_04-lts-gen2'
+    version: 'latest'
+  }
+  'Centos-85': {
+    publisher: 'eurolinuxspzoo1620639373013'
+    offer: 'centos-8-5-free'
+    sku: 'centos-8-5-free'
     version: 'latest'
   }
 }
