@@ -9,5 +9,5 @@ param vmSize = 'Standard_B1s'
 param virtualNetworkName = 'vNet-test'
 param subnetName = 'Subnet-test'
 param networkSecurityGroupName = 'SecGroupTest'
-param securityType = 'TrustedLaunch'
+param securityType = 'Standard'
 
